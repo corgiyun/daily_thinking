@@ -31,7 +31,7 @@ const getNum4 = function () {
 }();
 
 
-// 5.IIFE第一种方法
+// 5.IIFE第一种写法
 (function (num) {
     console.log(num); // 5
 })(5);
