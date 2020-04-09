@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New 运算符</title>
+</head>
+
+<body>
+
+    <script>
+        // new操作符的原理和实现
+        function myNew() {
+            // 1.创建一个新对象
+            let obj = {};
+            // 2.获取构造函数
+            let con = [].shift.call(arguments);
+            // 3.将实例显式链接到构造函数的原型
+            obj.__proto__ = con.prototype;
+            // 4.将新建的对象绑定this
+            let result = con.apply(obj, arguments);
+            // 5.return 出对象
+            return typeof result === 'object' ? result : obj
+        }
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.say = function () {
+                console.log(`My name is ${this.name}, and I'm ${this.age} years old`)
+            }
+        };
+
+        class Person2 {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age
+            }
+            say() {
+                console.log(`My name is ${this.name}, and I'm ${this.age} years old`)
+            }
+        }
+
+
+        let Bily = new Person2('Bily', 20)
+        // Bily.say();
+
+        let Lily = myNew(Person, 'Lily', 18, );
+        // Lily.say()
+
+        // 参考链接：https://blog.csdn.net/q1424966670/article/details/92839918
+    </script>
+
+</body>
+
+</html>
