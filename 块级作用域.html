@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>块级作用域</title>
+</head>
+
+<body>
+    <script>
+        var a = 0;
+        if (true) {
+            a = 1;
+            const a = function() {};
+            a = 21;
+            console.log('里面的a：' + a); // 21
+        }
+        console.log('外面的a：' + a); // 1 ???这里为什么是 1
+    </script>
+</body>
+
+</html>
